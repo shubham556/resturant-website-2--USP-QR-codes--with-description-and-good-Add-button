@@ -29,5 +29,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-print("Firebase initialized successfully.");
+/*print("Firebase initialized successfully.");
+/*this will be my second commit now
 /*hello*/
