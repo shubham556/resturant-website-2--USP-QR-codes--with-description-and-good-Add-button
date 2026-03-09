@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hotel Sri Vaari - Authentic 100% Vegetarian South Indian Cuisine in Saidapet, Chennai. Dosas, meals, biriyani, Chinese and more. Open daily 9 AM – 10 PM.">
+    <meta property="og:title" content="Hotel Sri Vaari | Authentic Veg Cuisine, Chennai">
+    <meta property="og:description" content="Authentic 100% Vegetarian South Indian Cuisine in Saidapet, Chennai.">
+    <title>Hotel Sri Vaari | Authentic Veg Cuisine</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========== HEADER ========== -->
+    <header id="header">
+        <div class="header-inner">
+            <a href="#home" class="logo">
+                <img src="logo.svg" alt="Hotel Sri Vaari Logo">
+                <span>Hotel Sri Vaari</span>
+            </a>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#menu" class="nav-link">Menu</a></li>
+                    <li><a href="#order" class="nav-link">Order &amp; Reserve</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="Open menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Table Indicator Banner (shown when accessed via QR) -->
+    <div id="table-banner" style="display:none;">
+        <span>You are at <strong>Table #<span id="table-number">0</span></strong></span>
+    </div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <p class="section-label">Authentic Vegetarian Cuisine</p>
+            <h1>A Taste of <span>South India</span><br>in Every Bite</h1>
+            <p class="hero-desc">From crispy golden dosas to hearty South Indian meals — made fresh with love, served with warmth in the heart of Chennai.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn btn-primary">View Menu</a>
+                <a href="#order" class="btn btn-primary">Reserve a Table</a>
+            </div>
+            <div class="hero-hours">
+                <span>Open Daily &nbsp;|&nbsp; 9:00 AM – 10:00 PM</span>
+            </div>
+        </div>
+        <div class="hero-badge">
+            <img src="logo.svg" alt="Hotel Sri Vaari">
+        </div>
+    </section>
+
+    <!-- ========== STATS BAR ========== -->
+    <div class="stats-bar">
+        <div class="stat"><strong>60+</strong><span>Menu Items</span></div>
+        <div class="stat"><strong>8</strong><span>Categories</span></div>
+        <div class="stat"><strong>100%</strong><span>Vegetarian</span></div>
+    </div>
+
+    <!-- ========== MENU ========== -->
+    <section id="menu" class="section section-alt">
+        <div class="section-inner">
+            <p class="section-label">What We Serve</p>
+            <h2>Our Menu</h2>
+            <div class="menu-tabs" id="menu-tabs"></div>
+            <div id="menu-container"></div>
+        </div>
+    </section>
+
+    <!-- ========== ORDER & RESERVATION ========== -->
+    <section id="order" class="section">
+        <div class="section-inner order-inner">
+            <div class="order-online">
+                <p class="section-label">Hungry Now?</p>
+                <h2>Order Online</h2>
+                <p>Get our fresh food delivered straight to your doorstep through your favourite food delivery app.</p>
+                <div class="order-btns">
+                    <a href="https://www.swiggy.com" target="_blank" rel="noopener" class="btn btn-primary">Order on Swiggy</a>
+                    <a href="https://www.zomato.com" target="_blank" rel="noopener" class="btn btn-outline">Order on Zomato</a>
+                </div>
+            </div>
+            <div class="divider-v"></div>
+            <div class="reservation">
+                <p class="section-label">Book a Seat</p>
+                <h2>Reserve a Table</h2>
+                <p class="reserve-subtitle">It takes just 30 seconds! Fill in what you can and we'll confirm your booking.</p>
+                <form class="reserve-form" id="reserve-form" action="https://formspree.io/f/xojnnjjj" method="POST">
+                    <input type="hidden" name="_subject" value="New Table Reservation - Hotel Sri Vaari">
+
+                    <label class="form-label">Your Name *</label>
+                    <input type="text" name="name" placeholder="e.g. Rahul" required autocomplete="name">
+
+                    <label class="form-label">Phone Number *</label>
+                    <input type="tel" name="phone" placeholder="e.g. 98765 43210" required autocomplete="tel">
+
+                    <label class="form-label">WhatsApp Number <span class="optional-tag">(optional — to receive confirmation on WhatsApp)</span></label>
+                    <input type="tel" name="whatsapp" id="whatsapp-input" placeholder="e.g. 98765 43210" autocomplete="tel">
+                    <label class="whatsapp-same-check"><input type="checkbox" id="whatsapp-same"> Same as phone number</label>
+
+                    <label class="form-label">Email <span class="optional-tag">(optional — for confirmation)</span></label>
+                    <input type="email" name="email" placeholder="e.g. yourname@gmail.com" autocomplete="email">
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label class="form-label">Date *</label>
+                            <select name="date" id="date-select" required>
+                                <option value="" disabled selected>Pick a date</option>
+                            </select>
+                        </div>
+                        <div class="form-field">
+                            <label class="form-label">Time *</label>
+                            <select name="time" required>
+                                <option value="" disabled selected>Pick a slot</option>
+                                <optgroup label="Morning">
+                                    <option value="09:00">9:00 AM</option>
+                                    <option value="09:30">9:30 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="10:30">10:30 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="11:30">11:30 AM</option>
+                                </optgroup>
+                                <optgroup label="Afternoon">
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="12:30">12:30 PM</option>
+                                    <option value="13:00">1:00 PM</option>
+                                    <option value="13:30">1:30 PM</option>
+                                    <option value="14:00">2:00 PM</option>
+                                    <option value="14:30">2:30 PM</option>
+                                    <option value="15:00">3:00 PM</option>
+                                </optgroup>
+                                <optgroup label="Evening">
+                                    <option value="15:30">3:30 PM</option>
+                                    <option value="16:00">4:00 PM</option>
+                                    <option value="16:30">4:30 PM</option>
+                                    <option value="17:00">5:00 PM</option>
+                                    <option value="17:30">5:30 PM</option>
+                                    <option value="18:00">6:00 PM</option>
+                                    <option value="18:30">6:30 PM</option>
+                                </optgroup>
+                                <optgroup label="Dinner">
+                                    <option value="19:00">7:00 PM</option>
+                                    <option value="19:30">7:30 PM</option>
+                                    <option value="20:00">8:00 PM</option>
+                                    <option value="20:30">8:30 PM</option>
+                                    <option value="21:00">9:00 PM</option>
+                                    <option value="21:30">9:30 PM</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label class="form-label">Number of Guests *</label>
+                    <div class="guest-picker" id="guest-picker">
+                        <button type="button" class="guest-btn" data-val="1">1</button>
+                        <button type="button" class="guest-btn" data-val="2">2</button>
+                        <button type="button" class="guest-btn" data-val="3">3</button>
+                        <button type="button" class="guest-btn" data-val="4">4</button>
+                        <button type="button" class="guest-btn" data-val="5">5</button>
+                        <button type="button" class="guest-btn" data-val="6+">6+</button>
+                    </div>
+                    <input type="hidden" name="guests" id="guest-input" required>
+
+                    <label class="form-label">Special Requests <span class="optional-tag">(optional)</span></label>
+                    <textarea name="requests" placeholder="e.g. High chair needed, birthday cake..." rows="2"></textarea>
+
+                    <button type="submit" class="btn btn-primary reserve-submit-btn">&#10003; Confirm My Reservation</button>
+                </form>
+                <div id="reserve-success" class="reserve-success" style="display:none;">
+                    <div class="success-icon">&#10004;</div>
+                    <h3>Reservation Received!</h3>
+                    <p>We'll confirm your booking shortly.</p>
+                    <p id="confirm-email-note" style="display:none;">&#128231; A confirmation email has been sent to your inbox.</p>
+                    <p id="confirm-wa-note" style="display:none;">&#128172; You'll receive a WhatsApp confirmation from us shortly.</p>
+                    <p>For urgent changes, call us at <a href="tel:9829625389">9829625389</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section id="about" class="section">
+        <div class="section-inner about-inner">
+            <div class="about-text">
+                <p class="section-label">Our Story</p>
+                <h2>Rooted in Tradition,<br>Served with Love</h2>
+                <p>Hotel Sri Vaari has been a cherished part of Saidapet's culinary fabric, bringing the soul of authentic South Indian vegetarian cooking to every table. Nestled in the heart of Chennai, our kitchen is guided by time-honoured recipes passed down through generations.</p>
+                <p>From the first crisp of a morning dosa to the warm comfort of a full South Indian meal, every dish we serve carries the essence of home. We use only the freshest ingredients, sourced daily, to ensure each plate is as wholesome as it is flavourful.</p>
+                <p>Whether you're stopping in for a quick tiffin, a leisurely family lunch, or a satisfying dinner — you'll always leave with a full heart at Hotel Sri Vaari.</p>
+            </div>
+            <div class="about-img">
+                <img src="Images 2/Generated%20Image%20February%2020%2C%202026%20-%202_06AM.png" alt="Hotel Sri Vaari Restaurant Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY ========== -->
+    <section id="gallery" class="section section-alt">
+        <div class="section-inner">
+            <p class="section-label">Take a Look</p>
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="Images 2/Generated%20Image%20February%2020%2C%202026%20-%202_06AM.png" alt="Hotel Sri Vaari Food">
+                <img src="Images 2/Generated%20Image%20February%2020%2C%202026%20-%202_09AM.png" alt="Hotel Sri Vaari Food">
+                <img src="Images 2/Generated%20Image%20February%2020%2C%202026%20-%202_09AM%20(1).png" alt="Hotel Sri Vaari Food">
+                <img src="Images 2/Generated%20Image%20February%2020%2C%202026%20-%202_09AM%20(2).png" alt="Hotel Sri Vaari Food">
+                <img src="Images 2/Generated%20Image%20February%2020%2C%202026%20-%202_10AM.png" alt="Hotel Sri Vaari Food">
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT ========== -->
+    <section id="contact" class="section">
+        <div class="section-inner">
+            <p class="section-label">Get in Touch</p>
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-detail">
+                        <span class="contact-icon">&#128205;</span>
+                        <div>
+                            <strong>Address</strong>
+                            <p>122, 40, Jones Ln, Karani Garden, Appavu Nagar,<br>Saidapet, Chennai, Tamil Nadu 600015</p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-icon">&#128222;</span>
+                        <div>
+                            <strong>Phone</strong>
+                            <p><a href="tel:9829625389">9829625389</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-icon">&#128231;</span>
+                        <div>
+                            <strong>Email</strong>
+                            <p><a href="mailto:shivansh16agarwal2@gmail.com">shivansh16agarwal2@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-detail">
+                        <span class="contact-icon">&#128337;</span>
+                        <div>
+                            <strong>Opening Hours</strong>
+                            <p>Monday – Sunday<br>9:00 AM – 10:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="https://formspree.io/f/xojnnjjj" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Phone Number">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div id="map">
+                <a href="https://www.google.com/maps/search/?api=1&query=122%2C+40%2C+Jones+Ln%2C+Karani+Garden%2C+Appavu+Nagar%2C+Saidapet%2C+Chennai%2C+Tamil+Nadu+600015" target="_blank" rel="noopener" class="map-link" aria-label="Open in Google Maps">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.993133323683!2d80.22030591482275!3d13.03599999081357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52670000000001%3A0x0!2sJones%20Ln%2C%20Karani%20Garden%2C%20Appavu%20Nagar%2C%20Saidapet%2C%20Chennai%2C%20Tamil%20Nadu%20600015!5e0!3m2!1sen!2sin!4v1676886937380!5m2!1sen!2sin" width="100%" height="220" style="border:0;pointer-events:none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="map-overlay"><span>&#128205; Tap to open in Google Maps</span></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <img src="logo.svg" alt="Hotel Sri Vaari">
+                <p>Hotel Sri Vaari</p>
+                <small>Authentic Vegetarian Cuisine</small>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#order">Order &amp; Reserve</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Visit Us</h4>
+                <p>122, 40, Jones Ln, Karani Garden,<br>Appavu Nagar, Saidapet,<br>Chennai, Tamil Nadu 600015</p>
+                <p><a href="tel:9829625389">9829625389</a></p>
+                <p>Mon – Sun &nbsp;|&nbsp; 9:00 AM – 10:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Hotel Sri Vaari. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox">
+        <span id="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Gallery Image">
+    </div>
+
+    <!-- Floating Cart Button -->
+    <button id="cart-float" aria-label="Open cart">
+        &#128722;
+        <span id="cart-badge">0</span>
+    </button>
+
+    <!-- Cart Drawer -->
+    <div id="cart-overlay"></div>
+    <div id="cart-drawer">
+        <div class="cart-header">
+            <h3>&#128722; Your Order</h3>
+            <button id="cart-close">&times;</button>
+        </div>
+        <div id="cart-items" class="cart-items">
+            <p class="cart-empty">Your cart is empty.<br>Add items from the menu!</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <strong id="cart-total-amount">&#8377;0.00</strong>
+            </div>
+            <button id="cart-checkout-btn" class="btn btn-primary" disabled>Place Order</button>
+            <button id="cart-clear-btn" class="cart-clear-btn">Clear Cart</button>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Modal -->
+    <div id="order-modal">
+        <div class="order-modal-content">
+            <div class="order-success-icon">&#10004;</div>
+            <h3>Order Placed!</h3>
+            <p class="order-number-text">Order <strong>#<span id="order-number-display">0</span></strong></p>
+            <p class="order-table-text">Table <strong>#<span id="order-table-display">0</span></strong></p>
+            <div id="order-summary"></div>
+            <div class="order-total">
+                <span>Order Total</span>
+                <strong id="order-total-amount">&#8377;0.00</strong>
+            </div>
+            <p class="order-note">Your order has been sent to the kitchen!<br>You'll be served at your table shortly.</p>
+            <button id="order-modal-close" class="btn btn-primary" style="width:100%;margin-top:16px;">Got it!</button>
+        </div>
+    </div>
+
+    <!-- Order Status Notification (fixed bottom bar) -->
+    <div id="order-status-bar" style="display:none;">
+        <span id="order-status-text"></span>
+        <button id="order-status-close">&times;</button>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js?v=2"></script>
+    <script src="menu.js?v=2"></script>
+    <script src="script.js?v=2"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table QR Codes - Hotel Sri Vaari</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --green: #2E7D32;
+            --green-dark: #1B5E20;
+            --gold: #F59E0B;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-body);
+            background: #f5f5f5;
+            color: #1a1a1a;
+            padding: 24px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .page-header h1 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+        .page-header p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .controls label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-right: 8px;
+        }
+        .controls input {
+            padding: 8px 14px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            width: 400px;
+            max-width: 80vw;
+        }
+        .controls input:focus {
+            outline: none;
+            border-color: var(--green);
+        }
+        .controls .hint {
+            font-size: 0.78rem;
+            color: #999;
+            margin-top: 6px;
+        }
+        .print-btn {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 10px 28px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .print-btn:hover { background: var(--green-dark); }
+
+        .qr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .qr-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            border-top: 4px solid var(--green);
+        }
+        .qr-card .table-label {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--green-dark);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+        .qr-card .restaurant-name {
+            font-size: 0.78rem;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        .qr-card .qr-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .qr-card .scan-text {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body { background: white; padding: 0; }
+            .page-header, .controls, .print-btn { display: none; }
+            .qr-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 10px;
+            }
+            .qr-card {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-header">
+        <h1>Table QR Codes</h1>
+        <p>Print these and place one on each table. Customers scan to order directly from their phone.</p>
+    </div>
+
+    <div class="controls">
+        <label for="base-url">Your website URL:</label>
+        <input type="text" id="base-url" value="" placeholder="e.g. https://yourdomain.com">
+        <div class="hint">Enter your website URL above, then the QR codes will update automatically.</div>
+        <br>
+        <button class="print-btn" onclick="window.print()">Print QR Codes</button>
+    </div>
+
+    <div class="qr-grid" id="qr-grid"></div>
+
+    <script>
+        const TOTAL_TABLES = 10;
+        const qrGrid  = document.getElementById('qr-grid');
+        const baseUrlInput = document.getElementById('base-url');
+        const qrInstances = [];
+
+        // Default to current page origin
+        baseUrlInput.value = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/');
+
+        function generateQRCodes() {
+            const baseUrl = baseUrlInput.value.replace(/\/+$/, '');
+            qrGrid.innerHTML = '';
+            qrInstances.length = 0;
+
+            for (let t = 1; t <= TOTAL_TABLES; t++) {
+                const card = document.createElement('div');
+                card.classList.add('qr-card');
+                card.innerHTML = `
+                    <div class="table-label">Table ${t}</div>
+                    <div class="restaurant-name">Hotel Sri Vaari</div>
+                    <div class="qr-container" id="qr-${t}"></div>
+                    <div class="scan-text">Scan to view menu<br>& place your order</div>
+                `;
+                qrGrid.appendChild(card);
+
+                const url = baseUrl + '/index.html?table=' + t;
+                const qr = new QRCode(document.getElementById('qr-' + t), {
+                    text: url,
+                    width: 180,
+                    height: 180,
+                    colorDark: '#1B5E20',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.M
+                });
+                qrInstances.push(qr);
+            }
+        }
+
+        generateQRCodes();
+
+        // Regenerate on URL change
+        let debounceTimer;
+        baseUrlInput.addEventListener('input', function () {
+            clearTimeout(debounceTimer);
+            debounceTimer = setTimeout(generateQRCodes, 500);
+        });
+    </script>
+</body>
+</html>

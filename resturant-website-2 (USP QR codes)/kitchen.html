@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Dashboard - Hotel Sri Vaari</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="kitchen.css">
+</head>
+<body>
+
+    <header class="kitchen-header">
+        <div class="kitchen-header-inner">
+            <div class="kitchen-logo">
+                <img src="logo.svg" alt="Hotel Sri Vaari">
+                <div>
+                    <h1>Kitchen Dashboard</h1>
+                    <p>Hotel Sri Vaari</p>
+                </div>
+            </div>
+            <div class="kitchen-stats">
+                <div class="kitchen-stat">
+                    <strong id="active-count">0</strong>
+                    <span>Active</span>
+                </div>
+                <div class="kitchen-stat">
+                    <strong id="ready-count">0</strong>
+                    <span>Ready</span>
+                </div>
+                <div class="kitchen-stat">
+                    <strong id="total-count">0</strong>
+                    <span>Today</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="kitchen-main">
+        <!-- Active Orders -->
+        <section class="kitchen-section">
+            <div class="section-title">
+                <h2>Active Orders</h2>
+                <span class="pulse-dot"></span>
+            </div>
+            <div id="active-orders" class="orders-grid">
+                <p class="no-orders">No active orders right now.</p>
+            </div>
+        </section>
+
+        <!-- Order History -->
+        <section class="kitchen-section history-section">
+            <div class="section-title">
+                <h2>Order History</h2>
+                <button id="toggle-history" class="toggle-btn">Show</button>
+            </div>
+            <div id="order-history" class="orders-grid" style="display:none;">
+                <p class="no-orders">No completed orders yet today.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js?v=2"></script>
+    <script src="kitchen.js?v=2"></script>
+</body>
+</html>

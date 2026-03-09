@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <!-- Background Circle: Deep Red for Appetite/South Indian Vibe -->
+  <circle cx="250" cy="250" r="240" fill="#b91c1c" stroke="#f59e0b" stroke-width="10"/>
+  
+  <!-- Inner Decorative Circle -->
+  <circle cx="250" cy="250" r="210" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="10,5"/>
+
+  <!-- Center Icon: Banana Leaf / Bowl Motif -->
+  <path d="M150,280 Q250,380 350,280 T450,280" fill="none" stroke="#fcd34d" stroke-width="0" />
+  <path d="M140,240 Q250,390 360,240 Z" fill="#fcd34d" opacity="0.2"/>
+  <path d="M250,130 Q300,130 320,180 Q250,220 180,180 Q200,130 250,130 Z" fill="#fbbf24" stroke="#78350f" stroke-width="2"/>
+  
+  <!-- Steam rising (Hot Food) -->
+  <path d="M220,100 Q230,70 220,50" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>
+  <path d="M250,90 Q260,60 250,40" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>
+  <path d="M280,100 Q290,70 280,50" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Main Text: HSV -->
+  <text x="250" y="310" font-family="'Segoe UI', Helvetica, sans-serif" font-weight="bold" font-size="100" text-anchor="middle" fill="#ffffff" letter-spacing="5">HSV</text>
+  
+  <!-- Subtext: Full Name -->
+  <text x="250" y="360" font-family="'Segoe UI', Helvetica, sans-serif" font-weight="bold" font-size="30" text-anchor="middle" fill="#fcd34d" letter-spacing="2">HOT SRIVARI</text>
+  
+  <!-- Tagline -->
+  <text x="250" y="410" font-family="serif" font-style="italic" font-size="20" text-anchor="middle" fill="#fca5a5">AUTHENTIC VEG CUISINE</text>
+</svg>
