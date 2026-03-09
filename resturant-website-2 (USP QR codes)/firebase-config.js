@@ -1,3 +1,5 @@
+/* BRANCH: version-A — This is Version A of the project */
+
 /*  =============================================
     FIREBASE CONFIGURATION
     =============================================
